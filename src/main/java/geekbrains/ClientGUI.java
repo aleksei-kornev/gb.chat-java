@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
 
@@ -23,9 +24,8 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
     private final JButton buttonDisconnect = new JButton("<html><b>Disconnect</b></html>");
     private final JTextField messageField = new JTextField();
     private final JButton buttonSend = new JButton("Send");
-    
-    private final JList<String> listUsers = new JList<>();
 
+    private final JList<String> listUsers = new JList<>();
 
 
     public static void main(String[] args) {
@@ -38,7 +38,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
     }
 
 
-    ClientGUI () {
+    ClientGUI() {
         Thread.setDefaultUncaughtExceptionHandler(this);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chat");
@@ -71,18 +71,33 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         add(panelBottom, BorderLayout.SOUTH);
 
         cbAlwaysOnTop.addActionListener(this);
+        buttonSend.addActionListener(this);
+        messageField.addActionListener(this);
 
         setVisible(true);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
-        if (src == cbAlwaysOnTop) {
+        if ((src == buttonSend) | (src == messageField)) {
+            chatArea.append(messageField.getText() + "\n");
+            //пишем историю в лог-файл здесь
+            addLogToFile(messageField.getText() + "\n");
+            messageField.setText("");
+        } else if (src == cbAlwaysOnTop) {
             setAlwaysOnTop(cbAlwaysOnTop.isSelected());
         } else {
             throw new RuntimeException("Unsupported action: " + src);
+        }
+    }
+
+    public void addLogToFile(String text) {
+        try (FileWriter writer = new FileWriter("log.txt", true)) {
+            writer.write(text);
+            writer.flush();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
