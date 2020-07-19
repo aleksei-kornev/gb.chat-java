@@ -17,7 +17,26 @@
             <artifactId>network</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>ru.geekbrains</groupId>
+            <artifactId>chat-library</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.3</version>
+                <configuration>
+                    <mainClass>ru.geekbrains.gui.fx.Server</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

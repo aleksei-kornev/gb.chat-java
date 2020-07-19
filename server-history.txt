@@ -1,2 +1,27 @@
 14.07.2020 13:17:11 <server>: echo: 877
 14.07.2020 13:17:13 <server>: echo: nmnm
+15.07.2020 17:46:12 <server>: echo: 5656
+15.07.2020 17:46:21 <server>: echo: 78
+15.07.2020 17:47:05 <server>: echo: 88
+15.07.2020 17:47:09 <server>: echo: 88
+15.07.2020 17:47:14 <server>: echo: 888
+15.07.2020 17:47:33 <server>: echo: 77
+15.07.2020 17:47:41 <server>: echo: 88
+15.07.2020 17:56:08 <server>: echo: 2323
+15.07.2020 17:56:11 <server>: echo: 323
+15.07.2020 17:56:20 <server>: echo: 4444
+15.07.2020 17:56:22 <server>: echo: 555
+15.07.2020 17:56:23 <server>: echo: 34
+15.07.2020 17:56:24 <server>: echo: 232
+19.07.2020 12:13:49 <server>: /msg_format_error##Incorrect request: rfe
+19.07.2020 13:01:40 <server>: /msg_format_error##Incorrect request: rtr
+19.07.2020 13:18:23 <server>: /msg_format_error##Incorrect request: rfr
+19.07.2020 13:20:17 <server>: /msg_format_error##Incorrect request: 45
+19.07.2020 13:31:57 <server>: /auth##denied
+19.07.2020 13:32:04 <server>: /auth##accept##sysroot
+19.07.2020 13:32:08 <server>: echo: hghg
+19.07.2020 13:32:09 <server>: echo: jj
+19.07.2020 14:36:53 <server>: /auth##denied
+19.07.2020 14:37:05 <server>: /auth##accept##sysroot
+19.07.2020 14:37:08 <server>: echo: lkhj
+19.07.2020 14:37:09 <server>: echo: ljl
