@@ -73,6 +73,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         panelBottom.add(buttonDisconnect, BorderLayout.WEST);
         panelBottom.add(messageField, BorderLayout.CENTER);
         panelBottom.add(buttonSend, BorderLayout.EAST);
+        panelBottom.setVisible(false);
 
         add(scrollPaneChatArea, BorderLayout.CENTER);
         add(scrollPaneUsers, BorderLayout.EAST);
@@ -83,6 +84,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         buttonSend.addActionListener(this);
         messageField.addActionListener(this);
         buttonLogin.addActionListener(this);
+        buttonDisconnect.addActionListener(this);
 
         setVisible(true);
     }
@@ -100,8 +102,16 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
             try {
                 socket = new Socket(ipAddressField.getText(), Integer.parseInt(portField.getText()));
                 socketThread = new MessageSocketThread(this, "Client" + loginField.getText(), socket);
+                panelTop.setVisible(false);
+                panelBottom.setVisible(true);
             } catch (IOException ioException) {
                 showError(ioException.getMessage());
+            }
+        } else if (src == buttonDisconnect) {
+            if (socketThread.isAlive()) {
+                socketThread.interrupt();
+                panelTop.setVisible(true);
+                panelBottom.setVisible(false);
             }
 
         } else {
